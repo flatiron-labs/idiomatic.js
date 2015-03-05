@@ -97,6 +97,7 @@ The following should be considered 1) incomplete, and 2) *REQUIRED READING*. I d
  * [Perfection Kills](http://perfectionkills.com/)
  * [Douglas Crockford's Wrrrld Wide Web](http://www.crockford.com)
  * [JS Assessment](https://github.com/rmurphey/js-assessment)
+ * [Speaking JavaScript](http://speakingjs.com/es5/index.html)
 
 
 
@@ -133,6 +134,8 @@ Projects _must_ include some form of unit, reference, implementation or function
  * [Native & Host Objects](#native)
  * [Comments](#comments)
  * [One Language Code](#language)
+ * [Semicolons](#semicolons)
+ * [jQuery](#jquery)
 
 
 
@@ -1301,9 +1304,66 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
 
-11. Semicolons
+11. Semicolons <a name="semicolons">Semicolons</a>
 
-    ***We use to semicolons to avoid automatic semicolon insertion (ASI) as some JavaScript statements must be terminated by them and we're currently not consistent with adhearing to those rules.Â***
+    ***We use to semicolons to avoid automatic semicolon insertion (ASI) as some JavaScript statements must be terminated by them and we're currently not consistent with adhearing to those rules.***
+
+12. <a name="jquery">jQuery</a>
+- Prefix jQuery object variables with a `$`.
+
+```javascript
+// bad
+var sidebar = $('.sidebar');
+
+// good
+var $sidebar = $('.sidebar');
+```
+
+- Cache jQuery lookups.
+
+```javascript
+// bad
+function setSidebar() {
+  $('.sidebar').hide();
+
+  // ...stuff...
+
+  $('.sidebar').css({
+    'background-color': 'pink'
+  });
+}
+
+// good
+function setSidebar() {
+  var $sidebar = $('.sidebar');
+  $sidebar.hide();
+
+  // ...stuff...
+
+  $sidebar.css({
+    'background-color': 'pink'
+  });
+}
+```
+
+- For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+- Use `find` with scoped jQuery object queries.
+
+```javascript
+// bad
+$('ul', '.sidebar').hide();
+
+// bad
+$('.sidebar').find('ul').hide();
+
+// good
+$('.sidebar ul').hide();
+
+// good
+$('.sidebar > ul').hide();
+
+// good
+$sidebar.find('ul').hide();
 
 
 ## Appendix
