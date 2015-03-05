@@ -435,7 +435,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     E. Quotes
 
-    Whether you prefer single or double shouldn't matter, there is no difference in how JavaScript parses them. What **ABSOLUTELY MUST** be enforced is consistency. **Never mix quotes in the same project. Pick one style and stick with it.**
+    Our projects will use single `''` quotes. If you're working in any legacy JavaScript please factor it to enforce consistency. **Never mix quotes in the same project**
+
 
     F. End of Lines and Empty Lines
 
@@ -1299,6 +1300,11 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 10. <a name="language">One Language Code</a>
 
     Programs should be written in one language, whatever that language may be, as dictated by the maintainer or maintainers.
+
+11. Semicolons
+
+    ***We use to semicolons to avoid automatic semicolon insertion (ASI) as some JavaScript statements must be terminated by them and we're currently not consistent with adhearing to those rules.Â***
+
 
 ## Appendix
 
