@@ -201,8 +201,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // Even better:
 
-    var i,
-      length = 100;
+    var i;
+    var length = 100;
 
     for ( i = 0; i < length; i++ ) {
       // statements
@@ -210,8 +210,8 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // Or...
 
-    var i = 0,
-      length = 100;
+    var i = 0;
+    var length = 100;
 
     for ( ; i < length; i++ ) {
       // statements
@@ -238,18 +238,19 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
     // 2.B.1.1
     // Variables
-    var foo = "bar",
-      num = 1,
-      undef;
+    var foo = "bar";
+    var num = 1;
+    var undef;
 
     // Literal notations:
-    var array = [],
-      object = {};
+    var array = [];
+    var object = {};
 
 
     // 2.B.1.2
-    // Using only one `var` per scope (function) promotes readability
-    // and keeps your declaration list free of clutter (also saves a few keystrokes)
+    // Using only multiple `var`s per scope (function) promotes readability
+    // While the community differs on this point we believe it is the best practice
+    // See [Speaking JavaScript's](http://speakingjs.com/es5) [variable conventions](http://speakingjs.com/es5/ch26.html#_variables) for more details
 
     // Bad
     var foo = "";
@@ -276,14 +277,14 @@ The following sections outline a _reasonable_ style guide for modern JavaScript 
 
       // some statements here
 
-      var bar = "",
-        qux;
+      var bar = "";
+      var qux;
     }
 
     // Good
     function foo() {
-      var bar = "",
-        qux;
+      var bar = "";
+      var qux;
 
       // all statements after the variables declarations.
     }
